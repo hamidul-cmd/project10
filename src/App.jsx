@@ -1,12 +1,10 @@
 import React from 'react'
-import Hero from './Sections/Hero'
+import Approutes from './Routes/Approutes'
 
 function App() {
   return (
     <>
-      <main className='max-w-wrapper m-auto'>
-        <Hero/>
-      </main>
+      <Approutes/>
     </>
   )
 }
