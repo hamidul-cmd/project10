@@ -23,7 +23,7 @@ function Gotop() {
     <>
       {showup && (
         <button
-          className="bg-orange-60 p-3 rounded-full fixed bottom-5 right-4 z-[1000] cursor-pointer"
+          className="bg-orange-65 p-3 rounded-full fixed bottom-5 right-4 z-[1000] cursor-pointer"
           onClick={gotop}
         >
           <div className="gotop">

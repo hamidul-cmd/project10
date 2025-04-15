@@ -7,10 +7,12 @@ import Admissions from "../pages/Admissions";
 import Contact from "../pages/Contact";
 import Studentlife from "../pages/Studentlife";
 import Layout from "../Layout";
+import  Gotop from "../Components/Gotop";
 
 function Approutes() {
   return (
     <>
+    <Gotop/>
       <BrowserRouter>
         <Routes>
           <Route element={<Layout />}>
