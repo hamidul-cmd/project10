@@ -40,6 +40,9 @@
   --text-40: 40px;
   --text-42: 42px;
   --text-60: 60px;
+  --text-54: 54px;
+  --text-34: 34px;
+  --text-44: 44px;
 
   --radius-20: 20px;
   --radius-10: 10px;
@@ -118,14 +121,56 @@ body {
 nav ul li a.active {
   background-color: var(--color-orange-95);
 }
+.l-150 {
+  line-height: 150%;
+}
+.l-130 {
+  line-height: 130%;
+}
+
+.shadow-orange {
+  box-shadow: 4px 4px 0px 1px #FFBE99;
+}
+.shadow-black {
+  box-shadow: 4px 4px 0px 1px #1E1E1E;
+}
+.section {
+  padding-inline: 16px;
+  overflow: hidden;
+}
+@media screen and (min-width: 800px) {
+  .section {
+    padding-inline: 30px;
+  }
+}
 
 @media screen and (min-width: 1440px) {
   .pera {
     font-size: 16px;
   }
+  .l-150 {
+    line-height: 150%;
+  }
+  .l-130 {
+    line-height: 130%;
+  }
+  .section {
+    padding-inline: 80px;
+  }
+  
 }
 @media screen and (min-width: 1920px) {
   .pera {
     font-size: 18px;
   }
+  .l-150 {
+    line-height: 150%;
+  }
+  .l-130 {
+    line-height: 130%;
+  }
+  .section {
+    padding-inline: 162px;
+  }
+  
 }

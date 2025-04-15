@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink } from "react-router-dom";
 import shadow from "../assets/shadow.png";
 import shadow2 from "../assets/shadow2.png";
 import boll from "../assets/boll.png";
@@ -37,7 +37,7 @@ function Header() {
   ];
   return (
     <>
-      <header className="px-4 pt-10 space-y-3.5 xll:pt-4 xll:px-12.5 3xl:pt-4.8 mb-12.5 xll:mb-14.5 3xl:mb-20 z-[500]">
+      <header className="px-4 pt-10 space-y-3.5 xll:pt-4 xll:px-12.5 3xl:pt-4.8 mb-12.5 xll:mb-14.5 3xl:mb-14.5 z-[500]">
         <Link
           to="/admissions"
           className="bg-orange-90 border-2 border-gray-15 rounded-md flex items-center justify-center gap-2.5 py-3 xll:gap-3.5 3xl:py-3.5 3xl:rounded-lg relative overflow-hidden"
@@ -88,23 +88,37 @@ function Header() {
           </div>
         </Link>
         <nav className="bg-white relative flex justify-between border-2 border-gray-15 rounded-lg ll:overflow-hidden z-[500]">
-          <Link to="/" className="px-5 py-4 bg-orange-65 border-r-2 border-gray-15 rounded-l-[6.5px]">
+          <Link
+            to="/"
+            className="px-5 py-4 bg-orange-65 border-r-2 border-gray-15 rounded-l-[6.5px]"
+          >
             <picture>
-              <source srcset={logodesktop} media="(min-width: 1920px)" />
-              <source srcset={logolaptop} media="(min-width: 1440px)" />
-              <img src={logomobile} alt="hero background" />
+              <source srcSet={logodesktop} media="(min-width: 1920px)" />
+              <source srcSet={logolaptop} media="(min-width: 1440px)" />
+              <img src={logomobile} alt="logo" />
             </picture>
           </Link>
-          <ul className={`absolute top-full left-0 w-full flex flex-col items-center mt-5 gap-2 bg-white py-2 rounded-lg border-2 border-gray-15 transition-all duration-300 ease-initial ${showmanu ? "translate-x-0" : "translate-x-[-110%]"} ll:relative ll:translate-x-0 ll:flex-row ll:w-fit ll:border-none ll:mt-0 ll:p-0 ll:gap-0 z-[500]`}>
+          <ul
+            className={`absolute top-full left-0 w-full flex flex-col items-center mt-5 gap-2 bg-white py-2 rounded-lg border-2 border-gray-15 transition-all duration-300 ease-initial ${
+              showmanu ? "translate-x-0" : "translate-x-[-110%]"
+            } ll:relative ll:translate-x-0 ll:flex-row ll:w-fit ll:border-none ll:mt-0 ll:p-0 ll:gap-0 z-[500]`}
+          >
             {navelinks.map((item, index) => (
               <li key={index} className="ll:h-full">
-                <NavLink onClick={() => setshowmanu(!showmanu)} to={item.link} className="py-3 block px-5 pera rounded-md ll:h-full ll:flex ll:items-center ll:rounded-none ll:border-l-2 border-gray-15 ll:px-7.5 text-gray-15 3xl:px-8.5">
+                <NavLink
+                  onClick={() => setshowmanu(!showmanu)}
+                  to={item.link}
+                  className="py-3 block px-5 pera rounded-md ll:h-full ll:flex ll:items-center ll:rounded-none ll:border-l-2 border-gray-15 ll:px-7.5 text-gray-15 3xl:px-8.5"
+                >
                   {item.name}
                 </NavLink>
               </li>
             ))}
           </ul>
-          <div onClick={() => setshowmanu(!showmanu)} className="flex justify-center items-center px-7.5 bg-orange-95 border-l-2 border-gray-15  rounded-r-[6.5px] ll:hidden">
+          <div
+            onClick={() => setshowmanu(!showmanu)}
+            className="flex justify-center items-center px-7.5 bg-orange-95 border-l-2 border-gray-15  rounded-r-[6.5px] ll:hidden"
+          >
             <svg
               width="28"
               height="28"
