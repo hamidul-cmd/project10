@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef, useState, useEffect } from "react";
 import childimgphone from "../assets/childimgphone.png";
 import childimgdesktop from "../assets/childimgdesktop.png";
 import childimglaptop from "../assets/childimglaptop.png";
@@ -8,6 +8,12 @@ import Commontittle from "../Components/Commontittle";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import BanefitsCird from "../Components/BanefitsCird";
+import test1 from "../assets/test1.png";
+import test2 from "../assets/test2.png";
+import test3 from "../assets/test3.png";
+import TestimonialsCird from "../Components/TestimonialsCird";
+import Faqbox from "../Components/Faqbox";
+import ExploreCird from "../Components/ExploreCird";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,6 +21,8 @@ function Home() {
   const [counterstart, setcounterstart] = useState(false);
   const herotextref = useRef(null);
   const heroimgref = useRef(null);
+  const leftbuttonref = useRef(null);
+  const rightbuttonref = useRef(null);
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       if (window.innerWidth < 1050) {
@@ -43,6 +51,32 @@ function Home() {
           opacity: 0,
           duration: 1.5,
           ease: "power4.out",
+        });
+        gsap.from(leftbuttonref.current, {
+          x: -100,
+          opacity: 0,
+          duration: 1.5,
+          ease: "power4.out",
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: leftbuttonref.current,
+            start: "top 95%",
+            end: "bottom 95%",
+            toggleActions: "play none none none",
+          },
+        });
+        gsap.from(rightbuttonref.current, {
+          x: 100,
+          opacity: 0,
+          duration: 1.5,
+          ease: "power4.out",
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: rightbuttonref.current,
+            start: "top 95%",
+            end: "bottom 95%",
+            toggleActions: "play none none none",
+          },
         });
       }
     });
@@ -191,6 +225,265 @@ function Home() {
       pera: "We foster a strong parent-school partnership to ensure seamless communication and collaboration.",
     },
   ];
+  const testimonialsCirsdData = [
+    {
+      img: test1,
+      name: "Jennifer B",
+      comment:
+        "Little Learners Academy has been a second home for my child. The caring staff and engaging programs have made her excited to go to school every day!",
+    },
+    {
+      img: test2,
+      name: "David K",
+      comment:
+        "Choosing Little Learners Academy for my daughter was the best decision. She has thrived in their nurturing and stimulating environment.",
+    },
+    {
+      img: test3,
+      name: "Emily L",
+      comment:
+        "My son's social and academic growth has been remarkable since joining Little Learners Academy. I am grateful for the supportive and dedicated teachers.",
+    },
+    {
+      img: test1,
+      name: "Jennifer B",
+      comment:
+        "Little Learners Academy has been a second home for my child. The caring staff and engaging programs have made her excited to go to school every day!",
+    },
+    {
+      img: test2,
+      name: "David K",
+      comment:
+        "Choosing Little Learners Academy for my daughter was the best decision. She has thrived in their nurturing and stimulating environment.",
+    },
+    {
+      img: test3,
+      name: "Emily L",
+      comment:
+        "My son's social and academic growth has been remarkable since joining Little Learners Academy. I am grateful for the supportive and dedicated teachers.",
+    },
+    {
+      img: test1,
+      name: "Jennifer B",
+      comment:
+        "Little Learners Academy has been a second home for my child. The caring staff and engaging programs have made her excited to go to school every day!",
+    },
+    {
+      img: test2,
+      name: "David K",
+      comment:
+        "Choosing Little Learners Academy for my daughter was the best decision. She has thrived in their nurturing and stimulating environment.",
+    },
+    {
+      img: test3,
+      name: "Emily L",
+      comment:
+        "My son's social and academic growth has been remarkable since joining Little Learners Academy. I am grateful for the supportive and dedicated teachers.",
+    },
+    {
+      img: test1,
+      name: "Jennifer B",
+      comment:
+        "Little Learners Academy has been a second home for my child. The caring staff and engaging programs have made her excited to go to school every day!",
+    },
+    {
+      img: test2,
+      name: "David K",
+      comment:
+        "Choosing Little Learners Academy for my daughter was the best decision. She has thrived in their nurturing and stimulating environment.",
+    },
+    {
+      img: test3,
+      name: "Emily L",
+      comment:
+        "My son's social and academic growth has been remarkable since joining Little Learners Academy. I am grateful for the supportive and dedicated teachers.",
+    },
+    {
+      img: test1,
+      name: "Jennifer B",
+      comment:
+        "Little Learners Academy has been a second home for my child. The caring staff and engaging programs have made her excited to go to school every day!",
+    },
+    {
+      img: test2,
+      name: "David K",
+      comment:
+        "Choosing Little Learners Academy for my daughter was the best decision. She has thrived in their nurturing and stimulating environment.",
+    },
+    {
+      img: test3,
+      name: "Emily L",
+      comment:
+        "My son's social and academic growth has been remarkable since joining Little Learners Academy. I am grateful for the supportive and dedicated teachers.",
+    },
+  ];
+
+  const [current, setCurrent] = useState(0);
+  // Track the card width for translations
+  const [cardWidth, setCardWidth] = useState(358); // Default card width in pixels
+  const [gap, setGap] = useState(16); // Default gap between cards (equivalent to gap-4 in Tailwind)
+  const [slidesPerView, setSlidesPerView] = useState(1); // Keep this for calculating visible slides
+
+  // Drag functionality states
+  const [isDragging, setIsDragging] = useState(false);
+  const [startPos, setStartPos] = useState(0);
+  const [currentTranslate, setCurrentTranslate] = useState(0);
+  const [prevTranslate, setPrevTranslate] = useState(0);
+  const [dragOffset, setDragOffset] = useState(0);
+  const sliderRef = useRef(null);
+
+  // Update currentTranslate when current slide changes
+  useEffect(() => {
+    setCurrentTranslate(-current * (cardWidth + gap));
+    setPrevTranslate(-current * (cardWidth + gap));
+  }, [current, cardWidth, gap]);
+
+  // Update card width based on window width
+  useLayoutEffect(() => {
+    const updateCardDimensions = () => {
+      if (window.innerWidth >= 1920) {
+        // 3xl breakpoint
+        setCardWidth(400);
+        setSlidesPerView(3);
+      } else if (window.innerWidth >= 1440) {
+        // xll breakpoint
+        setCardWidth(358);
+        setSlidesPerView(3);
+      } else if (window.innerWidth >= 800) {
+        // ll breakpoint
+        setCardWidth(320);
+        setSlidesPerView(2);
+      } else {
+        setCardWidth(358);
+        setSlidesPerView(1);
+      }
+    };
+
+    // Initial call
+    updateCardDimensions();
+
+    // Add resize listener
+    window.addEventListener("resize", updateCardDimensions);
+
+    // Cleanup
+    return () => window.removeEventListener("resize", updateCardDimensions);
+  }, []);
+
+  const maxSlide = testimonialsCirsdData.length - slidesPerView;
+
+  const previse = () => {
+    if (current === 0) setCurrent(maxSlide);
+    else setCurrent(current - 1);
+  };
+
+  const next = () => {
+    if (current === maxSlide) setCurrent(0);
+    else setCurrent(current + 1);
+  };
+
+  // Drag functionality
+  const dragStart = (e) => {
+    setIsDragging(true);
+    setStartPos(getPositionX(e));
+    setPrevTranslate(currentTranslate);
+  };
+
+  const drag = (e) => {
+    if (isDragging) {
+      const currentPosition = getPositionX(e);
+      const currentDragOffset = currentPosition - startPos;
+      setDragOffset(currentDragOffset);
+      setCurrentTranslate(prevTranslate + currentDragOffset);
+    }
+  };
+
+  const dragEnd = () => {
+    setIsDragging(false);
+    const threshold = cardWidth / 3; // Threshold to determine if we should move to next/prev slide
+
+    if (Math.abs(dragOffset) > threshold) {
+      if (dragOffset > 0) {
+        previse(); // Dragged right, go to previous slide
+      } else {
+        next(); // Dragged left, go to next slide
+      }
+    }
+
+    setDragOffset(0);
+  };
+
+  const getPositionX = (e) => {
+    return e.type.includes("mouse") ? e.pageX : e.touches[0].clientX;
+  };
+
+  // Calculate the transform value based on current slide and drag offset
+  const getSliderTransform = () => {
+    const baseTransform = -current * (cardWidth + gap);
+    return isDragging
+      ? `translateX(${baseTransform + dragOffset}px)`
+      : `translateX(${baseTransform}px)`;
+  };
+
+  // State to track which FAQ is currently open
+  const [openFaqIndex, setOpenFaqIndex] = useState(null);
+
+  const faqData = [
+    {
+      faq: "What are the school hours at Little Learners Academy?",
+      ans: "Our school hours are from 8:00 AM to 3:00 PM, Monday to Friday. We also offer extended care options for parents who need early drop-off or late pick-up.",
+    },
+    {
+      faq: "Is there a uniform policy for students?",
+      ans: "Our school hours are from 8:00 AM to 3:00 PM, Monday to Friday. We also offer extended care options for parents who need early drop-off or late pick-up.",
+    },
+    {
+      faq: "What extracurricular activities are available for students?",
+      ans: "Our school hours are from 8:00 AM to 3:00 PM, Monday to Friday. We also offer extended care options for parents who need early drop-off or late pick-up.",
+    },
+    {
+      faq: "What extracurricular activities are available for students?",
+      ans: "Our school hours are from 8:00 AM to 3:00 PM, Monday to Friday. We also offer extended care options for parents who need early drop-off or late pick-up.",
+    },
+    {
+      faq: "How do you handle food allergies and dietary restrictions?",
+      ans: "Our school hours are from 8:00 AM to 3:00 PM, Monday to Friday. We also offer extended care options for parents who need early drop-off or late pick-up.",
+    },
+    {
+      faq: "What is the teacher-to-student ratio at Little Learners Academy?",
+      ans: "Our school hours are from 8:00 AM to 3:00 PM, Monday to Friday. We also offer extended care options for parents who need early drop-off or late pick-up.",
+    },
+    {
+      faq: "How do you handle discipline and behavior management?",
+      ans: "Our school hours are from 8:00 AM to 3:00 PM, Monday to Friday. We also offer extended care options for parents who need early drop-off or late pick-up.",
+    },
+    {
+      faq: "How do I apply for admission to Little Learners Academy?",
+      ans: "Our school hours are from 8:00 AM to 3:00 PM, Monday to Friday. We also offer extended care options for parents who need early drop-off or late pick-up.",
+    },
+  ];
+  const exploreData = [
+    {
+      tittle: "About Us",
+      pera: "Discover our Mission, Values, and our unwavering commitment to providing the best learning experience for your child. Learn about our passionate educators and our engaging approach to early education.",
+      path: "/about",
+    },
+    {
+      tittle: "Academics",
+      pera: "Delve into our comprehensive academic programs designed to stimulate young minds, foster creativity, and encourage a love for learning. Explore our well-rounded curriculum that nurtures both intellectual and social development.",
+      path: "/academics",
+    },
+    {
+      tittle: "Student Life",
+      pera: "Peek into the vibrant and enriching world of Student Life at Little Learners Academy. Discover the array of extracurricular activities, arts and crafts, sports, and social events that make our school experience truly memorable.",
+      path: "/studentlife",
+    },
+    {
+      tittle: "Admissions",
+      pera: "Learn about our Enrollment Process and how to secure your child's place at Little Learners Academy. Find information about our admission requirements, application deadlines, and available spaces.",
+      path: "/admissions",
+    },
+  ];
+
   return (
     <>
       {/* hero section code start */}
@@ -257,7 +550,7 @@ function Home() {
       {/* hero section code over */}
 
       {/* benefites section code start */}
-      <section className="section mb-20 xll:mb-36.5 3xl:mb-[200px]">
+      <section className="section">
         <Commontittle
           capsule="Children Deserve Bright Future"
           tittle="Our Benefits"
@@ -277,6 +570,7 @@ function Home() {
         </div>
       </section>
       {/* benefites section code over */}
+
       {/* testimonials section code start */}
       <section className="section">
         <Commontittle
@@ -284,8 +578,192 @@ function Home() {
           tittle="Our Testimonials"
           pera="Our testimonials are heartfelt reflections of the nurturing environment we provide, where children flourish both academically and emotionally."
         />
+        <div className="relative">
+          <div
+            className="slider relative overflow-hidden mb-10 h-[325px] ll:h-[350px] 3xl:h-[360px] w-full max-w-[358px] ll:max-w-[660px] xll:max-w-[1110px] 3xl:max-w-[1242px] mx-auto cursor-grab xll:mb-0"
+            ref={sliderRef}
+          >
+            <div
+              className={`slide flex transition-transform duration-500 ease-in-out z-10 ${
+                isDragging ? "cursor-grabbing" : ""
+              }`}
+              style={{
+                transform: getSliderTransform(),
+                width: "auto",
+                display: "flex",
+                gap: `${gap}px`,
+                touchAction: "none", // Prevent browser handling of touch events
+              }}
+              onMouseDown={dragStart}
+              onMouseMove={drag}
+              onMouseUp={dragEnd}
+              onMouseLeave={dragEnd}
+              onTouchStart={dragStart}
+              onTouchMove={drag}
+              onTouchEnd={dragEnd}
+            >
+              {testimonialsCirsdData.map((data, index) => {
+                return (
+                  <div key={index}>
+                    <TestimonialsCird
+                      img={data.img}
+                      name={data.name}
+                      comment={data.comment}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+            <div
+              onMouseDown={dragStart}
+              onMouseMove={drag}
+              onMouseUp={dragEnd}
+              onMouseLeave={dragEnd}
+              onTouchStart={dragStart}
+              onTouchMove={drag}
+              onTouchEnd={dragEnd}
+              className="absolute top-0 left-0 w-full h-full bg-transparent z-20"
+            ></div>
+          </div>
+          <div className="flex justify-center gap-5 mt-8 xll:mt-0">
+            <button
+              ref={leftbuttonref}
+              onClick={previse}
+              className="left p-3 rounded-lg bg-white border-2 border-gray-20 hover:bg-orange-95 transition-colors cursor-pointer xll:absolute xll:top-[50%] translate-y-[-50%] xll:left-0"
+              aria-label="Previous testimonial"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M18 12C18 12.4971 17.5971 12.9 17.1 12.9H9.1345L11.7238 15.2512C12.0821 15.5958 12.0933 16.1655 11.7487 16.5238C11.4042 16.8821 10.8345 16.8933 10.4762 16.5487L6.2762 12.6487C6.09973 12.4791 6 12.2448 6 12C6 11.7552 6.09973 11.5209 6.2762 11.3512L10.4762 7.45125C10.8345 7.10673 11.4042 7.11791 11.7487 7.4762C12.0933 7.83449 12.0821 8.40423 11.7238 8.74875L9.1345 11.1L17.1 11.1C17.5971 11.1 18 11.5029 18 12Z"
+                  fill="#333333"
+                />
+              </svg>
+            </button>
+            <button
+              ref={rightbuttonref}
+              onClick={next}
+              className="right p-3 rounded-lg bg-white border-2 border-gray-20 hover:bg-orange-95 transition-colors cursor-pointer xll:absolute xll:top-[50%] translate-y-[-50%] xll:right-0"
+              aria-label="Next testimonial"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M6 12C6 11.5029 6.40294 11.1 6.9 11.1H14.8655L12.2762 8.74875C11.9179 8.40423 11.9067 7.83449 12.2513 7.4762C12.5958 7.11791 13.1655 7.10673 13.5238 7.45125L17.7238 11.3512C17.9003 11.5209 18 11.7552 18 12C18 12.2448 17.9003 12.4791 17.7238 12.6487L13.5238 16.5487C13.1655 16.8933 12.5958 16.8821 12.2513 16.5238C11.9067 16.1655 11.9179 15.5958 12.2762 15.2512L14.8655 12.9H6.9C6.40294 12.9 6 12.4971 6 12Z"
+                  fill="#333333"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
       </section>
       {/* testimonials section code over */}
+      {/* faq section code start  */}
+      <section className="section">
+        <Commontittle
+          capsule="Solutions For The Doubts"
+          tittle="Frequently Asked Questions"
+          pera="Find all the essential information you need in our FAQ section, designed to address the most frequently asked questions and help you make informed decisions for your child's education."
+        />
+        {/* Create two columns of FAQs */}
+        <div className="flex flex-col ll:flex-row gap-5 xll:gap-10 3xl:gap-12.5">
+          {/* Left column */}
+          <div className="flex-1 flex flex-col gap-5 xll:gap-6 3xl:gap-7.5">
+            {faqData
+              .slice(0, Math.ceil(faqData.length / 2))
+              .map((data, index) => {
+                const actualIndex = index;
+                return (
+                  <Faqbox
+                    key={actualIndex}
+                    faq={data.faq}
+                    ans={data.ans}
+                    isOpen={openFaqIndex === actualIndex}
+                    toggleFaq={() => {
+                      if (openFaqIndex === actualIndex) {
+                        // If clicking on the currently open FAQ, close it
+                        setOpenFaqIndex(null);
+                      } else {
+                        // Otherwise, open the clicked FAQ and close any other
+                        setOpenFaqIndex(actualIndex);
+                      }
+                    }}
+                  />
+                );
+              })}
+          </div>
+          {/* Right column */}
+          <div className="flex-1 flex flex-col gap-5 xll:gap-6 3xl:gap-7.5">
+            {faqData.slice(Math.ceil(faqData.length / 2)).map((data, index) => {
+              const actualIndex = index + Math.ceil(faqData.length / 2);
+              return (
+                <Faqbox
+                  key={actualIndex}
+                  faq={data.faq}
+                  ans={data.ans}
+                  isOpen={openFaqIndex === actualIndex}
+                  toggleFaq={() => {
+                    if (openFaqIndex === actualIndex) {
+                      // If clicking on the currently open FAQ, close it
+                      setOpenFaqIndex(null);
+                    } else {
+                      // Otherwise, open the clicked FAQ and close any other
+                      setOpenFaqIndex(actualIndex);
+                    }
+                  }}
+                />
+              );
+            })}
+          </div>
+        </div>
+      </section>
+      {/* faq section code over  */}
+      {/* explor section code start */}
+      <section className="section">
+        <Commontittle
+          capsule="Explore More"
+          tittle="Navigate through our Pages"
+          pera="Your gateway to discovering a wealth of valuable information about our kindergarten school, Feel free to explore and learn more about the enriching experiences that await your child at our kindergarten school"
+        />
+        <div className="grid grid-cols-1 gap-10 ll:grid-cols-2 3xl:gap-12.5 pb-1">
+            {exploreData.map((data, index) => {
+                return (
+                    <ExploreCird
+                        animationClass={()=>{
+                          if(index===0){
+                            "box1"
+                          }else if(index===1){
+                            "box2"
+                          } else if(index===2) {
+                            "box3"
+                          } else{
+                            "box4"
+                          }
+                        }}
+                        key={index}
+                        tittle={data.tittle}
+                        pera={data.pera}
+                        path={data.path}
+                    />
+                );
+            })}
+        </div>
+      </section>
+      {/* explor section code over */}
     </>
   );
 }
