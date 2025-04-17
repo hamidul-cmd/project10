@@ -137,9 +137,11 @@ nav ul li a.active {
 .shadow-black-mini {
   box-shadow: 2px 2px 0px 1px #1E1E1E;
 }
+.shadow-black-big {
+  box-shadow: 6px 6px 0px 1px #1E1E1E;
+}
 .section {
   padding-inline: 16px;
-  overflow: hidden;
   margin-bottom: 80px;
 }
 @media screen and (min-width: 800px) {

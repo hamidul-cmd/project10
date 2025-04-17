@@ -12,6 +12,7 @@ function BanefitsCird({ tittle, pera, icon }) {
         y: 100,
         opacity: 0,
         duration: 1,
+        scale: 0.7,
         ease: "power4.out",
         scrollTrigger: {
           trigger: banefitscirdref.current,

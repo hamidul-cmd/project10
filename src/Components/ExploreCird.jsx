@@ -15,6 +15,7 @@ function ExploreCird({ tittle, pera, path }) {
       gsap.from(explorref.current, {
         y: 200,
         opacity: 0,
+        scale: 0.7,
         duration: 1,
         ease: "power4.out",
         scrollTrigger: {

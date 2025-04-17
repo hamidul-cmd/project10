@@ -550,7 +550,7 @@ function Home() {
       {/* hero section code over */}
 
       {/* benefites section code start */}
-      <section className="section">
+      <section className="section h-fit">
         <Commontittle
           capsule="Children Deserve Bright Future"
           tittle="Our Benefits"
@@ -572,7 +572,7 @@ function Home() {
       {/* benefites section code over */}
 
       {/* testimonials section code start */}
-      <section className="section">
+      <section id="testimonials" className="section">
         <Commontittle
           capsule="Their Happy Words 🤗"
           tittle="Our Testimonials"
@@ -673,7 +673,7 @@ function Home() {
       </section>
       {/* testimonials section code over */}
       {/* faq section code start  */}
-      <section className="section">
+      <section id="faq" className="section">
         <Commontittle
           capsule="Solutions For The Doubts"
           tittle="Frequently Asked Questions"
@@ -740,27 +740,16 @@ function Home() {
           pera="Your gateway to discovering a wealth of valuable information about our kindergarten school, Feel free to explore and learn more about the enriching experiences that await your child at our kindergarten school"
         />
         <div className="grid grid-cols-1 gap-10 ll:grid-cols-2 3xl:gap-12.5 pb-1">
-            {exploreData.map((data, index) => {
-                return (
-                    <ExploreCird
-                        animationClass={()=>{
-                          if(index===0){
-                            "box1"
-                          }else if(index===1){
-                            "box2"
-                          } else if(index===2) {
-                            "box3"
-                          } else{
-                            "box4"
-                          }
-                        }}
-                        key={index}
-                        tittle={data.tittle}
-                        pera={data.pera}
-                        path={data.path}
-                    />
-                );
-            })}
+          {exploreData.map((data, index) => {
+            return (
+              <ExploreCird
+                key={index}
+                tittle={data.tittle}
+                pera={data.pera}
+                path={data.path}
+              />
+            );
+          })}
         </div>
       </section>
       {/* explor section code over */}
