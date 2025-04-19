@@ -9,6 +9,18 @@ import visionlaptop from "../assets/visionlaptop.png";
 import visionphone from "../assets/visionphone.png";
 import MIssionCird from "../Components/MIssionCird";
 import AwardsCird from "../Components/AwardsCird";
+import HistoryCird from "../Components/HistoryCird";
+import team1 from "../assets/team1.png";
+import team2 from "../assets/team2.png";
+import team3 from "../assets/team3.png";
+import team4 from "../assets/team4.png";
+import team5 from "../assets/team5.png";
+import team6 from "../assets/team6.png";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import TeamCird from "../Components/TeamCird";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function About() {
   // Define all data first before any logic
@@ -307,7 +319,66 @@ function About() {
       pera: "Awarded by the Education Excellence Association for our pioneering efforts in introducing innovative STEAM (Science, Technology, Engineering, Arts, and Mathematics) programs that ignite creativity and critical thinking in young learners.",
     },
   ];
-
+  const HistoryData = [
+    {
+      year: "2023",
+      tittle: "Resilience and Future Horizons",
+      pera: "Adapting to new challenges, we remained committed to our mission of providing an exceptional early education. Looking ahead with optimism, we envision a future filled with boundless possibilities as we continue shaping the leaders and thinkers of tomorrow.",
+    },
+    {
+      year: "2017",
+      tittle: "Innovation and Technology",
+      pera: "Innovation became the driving force behind our kindergarten's progress from 2016 to 2020. Embracing the latest educational technologies, we crafted engaging and interactive learning experiences for our students.",
+    },
+    {
+      year: "2012",
+      tittle: "Expansion and Recognition",
+      pera: "These years marked as a period of expansion and recognition for our school. As we extended our facilities and enhanced our curriculum, we received accolades for our commitment to quality education and innovative teaching methodologies.",
+    },
+    {
+      year: "2005",
+      tittle: "Inception and Growth",
+      pera: "Established in 2005, our kindergarten school began its journey with a vision to provide a nurturing space for young minds to explore, learn, and grow. Over the next five years, we witnessed significant growth.",
+    },
+  ];
+  const TeamData = [
+    {
+      name: "Ms. Sarah Anderson",
+      img: team1,
+      tittle: "Qualification:Bachelor's Degree in Early Childhood Education",
+      pera: "Ms. Sarah is a passionate educator with over 10 years of experience in guiding young minds. Her warm and nurturing approach creates a welcoming classroom environment where children feel comfortable to explore and learn.",
+    },
+    {
+      name: "Mr. David Roberts",
+      img: team2,
+      tittle: "Qualification: Master's Degree in Elementary Education",
+      pera: "With a strong background in elementary education, Mr. David brings a creative and interactive teaching style to his classroom. His enthusiasm for learning inspires students to ask questions and think critically.",
+    },
+    {
+      name: "Ms. Emily Hernandez",
+      img: team3,
+      tittle: "Qualification: Diploma in Child Psychology",
+      pera: "Ms. Emily's expertise in child psychology enables her to understand each child's unique needs and provide individualized support. Her caring nature fosters a strong sense of belonging and confidence in her students.",
+    },
+    {
+      name: "Mr. Michael Turner",
+      img: team4,
+      tittle: "Qualification: Bachelor's Degree in Physical Education",
+      pera: "Mr. Michael's passion for physical fitness and sports shines through in his energetic classes. He encourages students to stay active, promoting teamwork and a healthy lifestyle.",
+    },
+    {
+      name: "Ms. Jessica Lee",
+      img: team5,
+      tittle: "Qualification: Master's Degree in Special Education",
+      pera: "Ms. Jessica's specialization in special education allows her to create an inclusive and supportive learning environment for all students. She is dedicated to helping every child reach their full potential.",
+    },
+    {
+      name: "Mr. William Parker",
+      img: team6,
+      tittle: "Qualification: Bachelor's Degree in Fine Arts",
+      pera: "Mr. William's background in fine arts brings creativity and imagination to his classroom. Through art projects and activities, he nurtures the artistic expression and self-confidence of his students.",
+    },
+  ];
   // Slider state variables
   const [current, setCurrent] = useState(0);
   const [cardWidth, setCardWidth] = useState(358); // Default card width in pixels
@@ -417,6 +488,36 @@ function About() {
       ? `translateX(${baseTransform + dragOffset}px)`
       : `translateX(${baseTransform}px)`;
   };
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(leftbuttonref.current, {
+        x: -100,
+        opacity: 0,
+        scale: 0.7,
+        duration: 1.5,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: leftbuttonref.current,
+          start: "top 97%",
+          end: "bottom 97%",
+        },
+      });
+      gsap.from(rightbuttonref.current, {
+        x: 100,
+        opacity: 0,
+        scale: 0.7,
+        duration: 1.5,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: rightbuttonref.current,
+          start: "top 97%",
+          end: "bottom 97%",
+        },
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <>
@@ -426,7 +527,7 @@ function About() {
         pera="A leading kinder garden school dedicated to providing a nurturing and stimulating environment for young learners. With a commitment to excellence in early education, we believe in shaping curious minds and building a strong foundation for a lifelong love of learning. Our holistic approach fosters intellectual, social, emotional, and physical development, ensuring that each child reaches their full potential."
       />
       {/* mession section code start */}
-      <section className="section">
+      <section id="mission" className="section">
         <Commontittle
           capsule="Mission & Visions"
           tittle="Our Mission & Visions"
@@ -457,7 +558,7 @@ function About() {
         />
         <div className="relative">
           <div
-            className="slider relative overflow-hidden mb-10 h-[325px] ll:h-[350px] 3xl:h-[360px] w-full max-w-[358px] ll:max-w-[660px] xll:max-w-[1110px] 3xl:max-w-[1242px] mx-auto cursor-grab xll:mb-0"
+            className="slider relative overflow-hidden mb-10 h-[375px] ll:h-[400px] 3xl:h-[360px] w-full max-w-[358px] ll:max-w-[660px] xll:max-w-[1110px] 3xl:max-w-[1242px] mx-auto cursor-grab xll:mb-0"
             ref={sliderRef}
           >
             <div
@@ -559,8 +660,42 @@ function About() {
           tittle="Our History"
           pera="Founded with a passion for early education in 2005, our kindergarten school boasts a rich history of empowering young learners to reach their potential through innovative teaching methods and a supportive learning environment"
         />
+        <div className="grid grid-cols-1 gap-12.5 py-12.5 px-2.5 rounded-xl bg-white border-2 border-gray-15 shadow-black xll:py-24.5 xll:gap-20 3xl:gap-24.5">
+          {HistoryData.map((data, index) => {
+            return (
+              <HistoryCird
+                key={index}
+                year={data.year}
+                tittle={data.tittle}
+                pera={data.pera}
+              />
+            );
+          })}
+        </div>
       </section>
       {/* history section code over */}
+      {/* team section code start */}
+      <section className="section">
+        <Commontittle
+          capsule="Our Teachers With Experties"
+          tittle="Our Team Members"
+          pera="At Little Learners Academy, our teaching team is the heart of our educational journey. We take great pride in employing highly qualified and passionate educators who possess a deep understanding of early childhood development. Our teachers create a warm and engaging atmosphere, encouraging curiosity, instilling confidence, and fostering a love for learning."
+        />
+        <div className="grid grid-cols-1 gap-10 ll:grid-cols-2 3xl:gap-12.5 pb-1">
+          {TeamData.map((data, index) => {
+            return (
+              <TeamCird
+                key={index}
+                name={data.name}
+                img={data.img}
+                tittle={data.tittle}
+                pera={data.pera}
+              />
+            );
+          })}
+        </div>
+      </section>
+      {/* team section code over */}
     </>
   );
 }

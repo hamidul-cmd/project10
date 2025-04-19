@@ -96,7 +96,7 @@ function Footer() {
         },
         {
           name: "Our Vission",
-          link: "#vission",
+          link: "#mission",
         },
         {
           name: "Awards and Recognitions",
@@ -428,9 +428,7 @@ function Footer() {
             </div>
           </div>
           <div className="mt-7.5 mb-4 py-4 border-y border-gray-15 space-y-5 ll:flex justify-between items-center ll:space-y-0 xll:py-5 xll:mt-10 xll:mb-5 3xl:py-7.5 3xl:mt-12.5 3xl:mb-7.5">
-            <div
-              className="flex items-center gap-3 xll:gap-5 3xl:gap-8"
-            >
+            <div className="flex items-center gap-3 xll:gap-5 3xl:gap-8">
               {terms.map((data, index) => {
                 // Only add the before pseudo-element if it's not the last item
                 const isLastItem = index === terms.length - 1;
@@ -453,7 +451,7 @@ function Footer() {
               {footersociallinks.map((data, index) => {
                 return (
                   <a
-                  target="_blank"
+                    target="_blank"
                     key={index}
                     href={data.link}
                     className="p-3 rounded-md bg-orange-90 border-2 border-gray-15 xll:p-3.5 3xl:p-4 3xl:rounded-lg hover:bg-white transition-all duration-200 ease-in"
@@ -464,7 +462,9 @@ function Footer() {
               })}
             </div>
           </div>
-            <p className="text-center pera font-medium l-150 text-gray-40">Copyright © [2023] Little Learners Academy. All rights reserved.</p>
+          <p className="text-center pera font-medium l-150 text-gray-40">
+            Copyright © [2023] Little Learners Academy. All rights reserved.
+          </p>
         </div>
       </footer>
     </>
