@@ -260,8 +260,8 @@ function Footer() {
           ease: "power4.out",
           scrollTrigger: {
             trigger: logobox.current,
-            start: "top 95%",
-            end: "bottom 97%",
+            start: "top 110%",
+            end: "bottom 100%",
             toggleActions: "play none none none",
             stagger: 0.2,
           },
@@ -277,8 +277,8 @@ function Footer() {
           ease: "power4.out",
           scrollTrigger: {
             trigger: logoimg.current,
-            start: "top 95%",
-            end: "bottom 97%",
+            start: "top 110%",
+            end: "bottom 100%",
             stagger: 0.2,
           },
         },
@@ -293,8 +293,8 @@ function Footer() {
           ease: "power4.out",
           scrollTrigger: {
             trigger: logotext.current,
-            start: "top 95%",
-            end: "bottom 97%",
+            start: "top 110%",
+            end: "bottom 100%",
             stagger: 0.2,
           },
         },
@@ -309,8 +309,8 @@ function Footer() {
           ease: "power4.out",
           scrollTrigger: {
             trigger: sociallinks.current,
-            start: "top 97%",
-            end: "bottom 95%",
+            start: "top 110%",
+            end: "bottom 100%",
             stagger: 0.2,
           },
         },
