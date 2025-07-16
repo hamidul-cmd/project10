@@ -1,5 +1,4 @@
 import React, { useLayoutEffect, useRef } from "react";
-import heroabs from "../assets/heroabs.png";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -86,7 +85,7 @@ function CommonHero({ capsule, tittle, pera, contactInfo }) {
           </div>
           <div className="absolute top-0 left-0 z-10">
             <img
-              src={heroabs}
+              src="https://i.imgur.com/n2EGNs5.png"
               alt="heroabs"
               className="h-24.5 w-24.5 xll:h-[137px] xll:w-[137px] 3xl:h-[200px] 3xl:w-[200px]"
             />

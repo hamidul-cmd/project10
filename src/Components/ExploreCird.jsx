@@ -32,7 +32,10 @@ function ExploreCird({ tittle, pera, path }) {
   }, []);
   return (
     <>
-      <div ref={explorref} className="p-10 rounded-10 bg-white border-2 border-gray-15 space-y-10 text-center shadow-black xll:p-14.5 xll:space-y-14.5 3xl:p-20 3xl:rounded-xl 3xl:space-y-20">
+      <div
+        ref={explorref}
+        className="p-10 rounded-10 bg-white border-2 border-gray-15 space-y-10 text-center shadow-black xll:p-14.5 xll:space-y-14.5 3xl:p-20 3xl:rounded-xl 3xl:space-y-20"
+      >
         <div className="space-y-7.5 xll:space-y-10 3xl:space-y-12.5">
           <div className="space-y-5 xll:space-y-6 3xl:space-y-7.5">
             <h3 className="text-28 font-bold l-130 font-raleway text-gray-10 xll:text-34 3xl:text-5xl">

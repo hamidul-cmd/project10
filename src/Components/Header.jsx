@@ -1,11 +1,5 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import shadow from "../assets/shadow.png";
-import shadow2 from "../assets/shadow2.png";
-import boll from "../assets/boll.png";
-import logomobile from "../assets/logomobile.png";
-import logolaptop from "../assets/logoleptop.png";
-import logodesktop from "../assets/logodesktop.png";
 
 function Header() {
   const [showmanu, setshowmanu] = useState(false);
@@ -60,28 +54,28 @@ function Header() {
           </div>
           <div className="h-fit w-fit absolute top-[-2px] left-[-9px] bottom-[-3px] z-10  xll:left-[-9px] xll:top-[-87px] xll:bottom-[-45px] 3xl:top-[-131px] 3xl:bottom-[-35px]">
             <img
-              src={shadow}
+              src="https://i.imgur.com/paV1G8a.png"
               alt="shadow"
               className="block h-12.5 w-12.5 xll:h-[180px] xll:w-[180px] 3xl:h-[224px] 3xl:w-[224px]"
             />
           </div>
           <div className="h-fit w-fit absolute top-[-2px] right-0 bottom-[-3px] z-10 xll:right-0 xll:top-[-87px] xll:bottom-[-45px] 3xl:top-[-131px] 3xl:bottom-[-35px]">
             <img
-              src={shadow2}
+              src="https://i.imgur.com/sb1kl6z.png"
               alt="shadow"
               className="block h-12.5 w-12.5 xll:h-[180px] xll:w-[180px] 3xl:h-[224px] 3xl:w-[224px]"
             />
           </div>
           <div className="absolute left-1 top-[-11px] z-20 xll:top-[-25px] xll:left-[25%]">
             <img
-              src={boll}
+              src="https://i.imgur.com/qBhxEqg.png"
               alt="boll"
               className="block h-7.5 w-7.5 xll:h-12.5 xll:w-12.5 3xl:h-[72px] 3xl:w-[72px]"
             />
           </div>
           <div className="absolute right-[-18px] bottom-[-26px] z-20 xll:bottom-[-18px] xll:right-[25%]">
             <img
-              src={boll}
+              src="https://i.imgur.com/qBhxEqg.png"
               alt="boll"
               className="block h-12.5 w-12.5 xll:h-8 xll:w-8 3xl:h-10 3xl:w-10"
             />
@@ -93,9 +87,15 @@ function Header() {
             className="px-5 py-4 bg-orange-65 border-r-2 border-gray-15 rounded-l-[6.5px]"
           >
             <picture>
-              <source srcSet={logodesktop} media="(min-width: 1920px)" />
-              <source srcSet={logolaptop} media="(min-width: 1440px)" />
-              <img src={logomobile} alt="logo" />
+              <source
+                srcSet="https://i.imgur.com/N5gOQPn.png"
+                media="(min-width: 1920px)"
+              />
+              <source
+                srcSet="https://i.imgur.com/ijRzcuh.png"
+                media="(min-width: 1440px)"
+              />
+              <img src="https://i.imgur.com/5Lx1Wdp.png" alt="logo" />
             </picture>
           </Link>
           <ul

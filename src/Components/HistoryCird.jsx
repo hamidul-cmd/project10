@@ -1,5 +1,4 @@
 import React, { useLayoutEffect, useRef } from "react";
-import historyicon from "../assets/historyicon.png";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -71,7 +70,7 @@ function HistoryCird({ year, tittle, pera }) {
           className="px-6 py-5 flex gap-5 items-center bg-white rounded-10 border-2 border-gray-15 shadow-black w-fit xll:px-[34px] xll:py-6 3xl:px-12.5 3xl:py-7.5 3xl:rounded-xl 3xl:shadow-black-big 3xl:shadow-none"
         >
           <img
-            src={historyicon}
+            src="https://i.imgur.com/d740r1W.png"
             alt="icon"
             className="h-12.5 w-12.5 xll:h-14.5 xll:w-14.5 3xl:h-[87px] 3xl:w-[87px]"
           />
